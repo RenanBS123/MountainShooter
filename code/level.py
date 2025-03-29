@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from Game import Game
-from Class9 import Class9
+
 
 
 class Level(Game, Class9):
