@@ -10,7 +10,7 @@ from code.Const import WIN_WIDTH, COLOR_ORANGE, MENU_OPTION, COLOR_WHITE, COLOR_
 class Menu:
     def __init__(self, window):
         self.window = window
-        self.surf = pygame.image.load('./asset/menu.png')
+        self.surf = pygame.image.load('./asset/menu.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self, ):
@@ -19,7 +19,7 @@ class Menu:
         pygame.mixer_music.play(-1)
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "Mountain", COLOR_ORANGE, ((WIN_WIDTH / 2),70))
+            self.menu_text(50, "Mountain", COLOR_ORANGE, ((WIN_WIDTH / 2), 70))
             self.menu_text(50, "Shooter", COLOR_ORANGE, ((WIN_WIDTH / 2), 120))
 
             for i in range(len(MENU_OPTION)):
@@ -27,10 +27,9 @@ class Menu:
                     self.menu_text(20, MENU_OPTION[i], COLOR_YELLOW, ((WIN_WIDTH / 2), 200 + 25 * i))
                 else:
                     self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
-
             pygame.display.flip()
 
-           # Check for all events
+            # Check for all events
             for event in pygame.event.get():  # Verificar os eventos da variavel
                 if event.type == pygame.QUIT:
                     pygame.quit()  # Close Window
@@ -54,4 +53,3 @@ class Menu:
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
         self.window.blit(source=text_surf, dest=text_rect)
-
